@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <main className="min-h-screen flex flex-col items-center justify-center">{children}</main>
+          <FacebookPixel />
         </ThemeProvider>
       </body>
     </html>
@@ -31,3 +32,4 @@ export default function RootLayout({
 
 
 import './globals.css'
+import FacebookPixel from '@/components/facebook-pixel'
