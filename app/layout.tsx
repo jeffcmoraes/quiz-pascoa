@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import Script from 'next/script'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,15 +22,22 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <main className="min-h-screen flex flex-col items-center justify-center">{children}</main>
-          <FacebookPixel />
+            <Script id="pixel-id-setup" strategy="afterInteractive">
+              {`window.pixelId = "67ecb4dc8f2982e1b576b003";`}
+            </Script>
+
+            <Script
+              id="utmify-pixel"
+              src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+              strategy="afterInteractive"
+              async
+              defer
+            />
+          <main className="min-h-screen flex flex-col items-center justify-center">
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>
   )
 }
-
-
-
-import './globals.css'
-import FacebookPixel from '@/components/facebook-pixel'
