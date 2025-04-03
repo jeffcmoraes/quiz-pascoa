@@ -9,8 +9,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "ChocoRenda - Quiz",
   description: "Descubra como faturar até R$5.000 na Páscoa vendendo ovos gourmet",
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
-    generator: 'v0.dev'
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1"
 }
 
 export default function RootLayout({
