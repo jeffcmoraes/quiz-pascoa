@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 0 72% 41%; /* Ajustado para bordô */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 0 72% 41%; /* Ajustado para bordô */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 0 72% 41%; /* Ajustado para bordô */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 0 72% 41%; /* Ajustado para bordô */
+}
+
+* {
+  @apply border-border;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+/* Animações personalizadas */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 300px;
+  }
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulse-constant {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); /* Revertido para vermelho original */
+  }
+  70% {
+    transform: scale(1.03);
+    box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); /* Revertido para vermelho original */
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); /* Revertido para vermelho original */
+  }
+}
+
+@keyframes border-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.5); /* Revertido para vermelho original */
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.8); /* Revertido para vermelho original */
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(220, 38, 38, 0.5); /* Revertido para vermelho original */
+  }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: -100px;
+  }
+  40%,
+  100% {
+    background-position: 300px;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shine 3s infinite;
+}
+
+.animate-gold-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-gold-shimmer::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(212, 179, 38, 0) 0%,
+    rgba(212, 179, 38, 0.3) 50%,
+    rgba(212, 179, 38, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: gold-shimmer 3s infinite;
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+.animate-pulse-constant {
+  animation: pulse-constant 2s infinite;
+}
+
+.animate-border-glow {
+  animation: border-glow 2s infinite;
+}
+
+.animate-gradient {
+  background: linear-gradient(90deg, #dc2626, #b91c1c, #dc2626); /* Revertido para vermelho original */
+  background-size: 200% 200%;
+  animation: gradient-move 3s ease infinite;
+}
+
+.animate-gold-gradient {
+  background: linear-gradient(90deg, #d4b326, #b39700, #d4b326); /* Gradiente dourado */
+  background-size: 200% 200%;
+  animation: gradient-move 3s ease infinite;
+}
+
+.scale-on-hover {
+  transition: transform 0.3s ease;
+}
+
+.scale-on-hover:hover {
+  transform: scale(1.05);
+}
+
+.pulse-on-hover:hover {
+  animation: pulse 1.5s infinite;
+}
+
+.glow-on-hover {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.7); /* Revertido para vermelho original */
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.7); /* Revertido para vermelho original */
+}
+
+.gold-glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.gold-glow-on-hover:hover {
+  box-shadow: 0 0 15px rgba(212, 179, 38, 0.7); /* Brilho dourado */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.rotate-on-hover:hover {
+  animation: rotate 0.5s ease;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+/* Otimizações para mobile */
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+  .animate-float {
+    animation-duration: 4s;
+  }
+
+  .animate-shine::after {
+    animation-duration: 2.5s;
+  }
+}
+
+/* Animações de transição entre etapas */
+.step-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.step-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.step-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.transition-all {
+  transition-duration: 300ms;
+}
+
